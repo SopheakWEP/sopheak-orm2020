@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Products;
+use App\Posts;
+use App\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -64,6 +66,11 @@ Route::get("delete/{id}", function($id){
     $pro = Products::find($id);
     $pro->delete();
     echo 'deleted';
+});
+
+Route::get("/user/{id}/post", function($id){
+    $post = User::find($id)->post;
+    return $post;
 });
 
 Auth::routes();
